@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.example.myplugin"
+        version="1.0">
+
+  <name>MyPlugin</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/MyPlugin.js" target="js/MyPlugin.js"/>
+
+  <js-module src="www/MyPlugin.js" name="MyPlugin">
+    <clobbers target="MyPlugin" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="MyPlugin">
+        <param name="android-package" value="com.example.plugin.MyPlugin"/>
+      </feature>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <service android:name="com.example.plugin.MyService" />
+      <activity android:name="com.example.plugin.MainActivity"/>
+    </config-file>
+
+
+    <framework src="com.android.support:support-v4:+" />
+    <source-file src="src/android/MainActivity.java" target-dir="src/com/example/plugin/"/>
+    <source-file src="src/android/main.xml" target-dir="src/com/example/plugin/"/>
+    <source-file src="src/android/MyPlugin.java" target-dir="src/com/example/plugin/"/>
+    <source-file src="src/android/MyService.java" target-dir="src/com/example/plugin/"/>
+  </platform>
+
+</plugin>
